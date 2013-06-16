@@ -8,7 +8,7 @@ class TwitterFollowingJob {
     private static def logger = LoggerFactory.getLogger(TwitterFollowingJob)
     def twitterService
     static triggers = {
-        simple repeatInterval: 5 * 60 *  1000l // execute job once in 5 minutes
+        simple startDelay: 30 * 1000l, repeatInterval: 5 * 60 *  1000l // execute job once in 5 minutes
     }
 
     def execute() {
