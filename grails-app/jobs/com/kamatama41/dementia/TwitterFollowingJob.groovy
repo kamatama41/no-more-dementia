@@ -19,7 +19,9 @@ class TwitterFollowingJob {
 
         def follows = nowFollowers - nowFollowings
         follows.each { id ->
-            twitterService.follow(id)
+            def user = twitterService.follow(id)
+            // ツイートする
+            twitterService.tweet("@${user.screenName} さん、フォローありがとう！今日の予定を復唱してみましょう♪")
             logger.info("User({$id}) follow.")
         }
         def unfollows = nowFollowings - nowFollowers
